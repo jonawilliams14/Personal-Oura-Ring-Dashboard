@@ -7,7 +7,7 @@ The first version focuses on a local-first workflow:
 - Import manually exported Oura CSV data.
 - Summarize the latest recovery metrics.
 - Generate a simple running recommendation.
-- View trends in a Streamlit dashboard.
+- View trends in either the Streamlit dashboard or the native JavaScript frontend.
 
 ## Why CSV First?
 
@@ -40,11 +40,17 @@ Export your data from the Oura Membership Hub, then place CSV files under `data/
 oura-dashboard
 ```
 
-## Run the Dashboard
+## Run the Streamlit Dashboard
 
 ```powershell
 streamlit run src/oura_dashboard/app.py
 ```
+
+## Run the Native Frontend
+
+Open `frontend/index.html` in a browser.
+
+The native frontend parses uploaded CSV files in the browser. Files are not uploaded to a server, and there is no build step.
 
 ## Privacy Notes
 
@@ -55,6 +61,7 @@ Oura data is health-adjacent personal data. This starter keeps everything local 
 This is intentionally an MVP:
 
 - CSV import first.
+- Native browser CSV upload frontend.
 - OAuth/API support later.
 - No database yet.
 - No medical claims.
