@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oura Personalization Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Native JavaScript MVP</p>
+          <h1>Oura Personalization Dashboard</h1>
+          <p>
+            Upload exported Oura CSV files and review recovery signals locally in
+            your browser. No framework, no server upload, no build step.
+          </p>
+        </div>
+
+        <label class="upload-panel" for="csv-input">
+          <span>Upload CSV files</span>
+          <small>Supports Oura sleep and readiness exports with date, score, sleep duration, and HRV balance columns.</small>
+          <input id="csv-input" type="file" accept=".csv,text/csv" multiple />
+        </label>
+      </section>
+
+      <section id="status" class="status" hidden></section>
+
+      <section class="metric-grid" aria-label="Latest metrics">
+        <article class="metric">
+          <span>Readiness</span>
+          <strong id="readiness-value">No data</strong>
+        </article>
+        <article class="metric">
+          <span>Sleep</span>
+          <strong id="sleep-value">No data</strong>
+        </article>
+        <article class="metric">
+          <span>Sleep Hours</span>
+          <strong id="sleep-hours-value">No data</strong>
+        </article>
+        <article class="metric">
+          <span>HRV Balance</span>
+          <strong id="hrv-value">No data</strong>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="recommendation">
+          <p class="eyebrow">Latest Recommendation</p>
+          <h2 id="recommendation-level">Upload CSV Data</h2>
+          <p id="recommendation-copy">
+            Choose one or more Oura CSV exports to generate a local recovery summary.
+          </p>
+          <small id="recommendation-date"></small>
+        </article>
+
+        <article class="trend-panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Trend</p>
+              <h2>Recovery Scores</h2>
+            </div>
+            <span id="record-count">0 records</span>
+          </div>
+          <canvas id="trend-chart" width="900" height="320" aria-label="Readiness and sleep trend chart"></canvas>
+        </article>
+      </section>
+
+      <section class="file-panel">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Uploaded Files</p>
+            <h2>Parsed Data</h2>
+          </div>
+        </div>
+        <ul id="file-list"></ul>
+        <p id="empty-state" class="empty-state">No CSV files uploaded yet.</p>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
